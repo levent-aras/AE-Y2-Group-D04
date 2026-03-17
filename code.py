@@ -21,6 +21,7 @@ H = (k_b*T/m)*(alpha**(-1)*(1-math.e**(alpha*delta_t)**2))
 
 Y1 = np.random.randn(3)
 Y2 = np.random.randn(3)
+Y3 = np.random.randn(3)
 
 #Create arrays for particle velocity and position
 
