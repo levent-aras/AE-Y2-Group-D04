@@ -3,6 +3,12 @@ import matplotlib.pyplot as plt
 
 #Specify the physical parameters of the system (viscosity, temp, soot density, particle diameter etc.)
 
+#Specify the physical parameters of the system (viscosity, temp, soot density, particle diameter etc.)
+visc =     #viscosity
+d_p =      #particle diameter
+T =        #temperature
+rho_soot = #soot density
+
 #Set the Timesteps and initialize the matrix for mean square displacement
 
 #Calculate G, H & I
