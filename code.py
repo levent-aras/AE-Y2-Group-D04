@@ -24,7 +24,7 @@ H = (k_b*T/m)*((alpha**(-1))*(1-math.e**(alpha*delta_t)**2))
 I = k_b*T/m * alpha**(-2)*(2*alpha*delta_t-3+4*math.e**(-alpha*delta_t)-math.e**(-2*alpha*delta_t))
 #Call the Gaussian-distributed random numbers
 
-for i in 101:
+for i in range(1, n):
   
 
 Y1 = np.random.randn(3)
