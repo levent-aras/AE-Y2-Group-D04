@@ -11,7 +11,7 @@ rho_soot = #soot density
 k_b = 1.38 * 10**(-23)
 m = #mass
 #Set the Timesteps and initialize the matrix for mean square displacement
-delta_t = = [5, 10, 35, 50]
+delta_t = [5, 10, 35, 50]
 
 #Calculate G, H & I
 alpha = 18*visc/(rho_soot*d_p**2)
@@ -31,9 +31,9 @@ R = [Rx, Ry, Rz]
 Vx = Y1*G**0.5
 Vy = Y2*G**0.5
 Vz = Y3*G**0.5
-Rx = Y1*H/G**0.5
-Ry = Y2*H/G**0.5
-Rz = Y3*H/G**0.5
+Rx = Y1*H/G**0.5 + (I-(H**2)/G)**0.5*Y1
+Ry = Y2*H/G**0.5 + (I-(H**2)/G)**0.5*Y2
+Rz = Y3*H/G**0.5 + (I-(H**2)/G)**0.5*Y3
 # I suggest a time loop. For each time step:
 # generate random numbers
 # update velocity & position
