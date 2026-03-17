@@ -31,11 +31,15 @@ Pos = []
 for i in range(1, n):
   Y1 = np.random.randn(3)
   Y2 = np.random.randn(3)
+  #Create arrays for particle velocity and position
+  V = Y1**G**0.5
+  R = Y2*H/G**0.5 + (I-(H**2)/G)**0.5*Y2
+  Pos = 
+
+msd = 
+Avogadro = 
 
 
-#Create arrays for particle velocity and position
-V = Y1**G**0.5
-R = Y2*H/G**0.5 + (I-(H**2)/G)**0.5*Y2
 
 # I suggest a time loop. For each time step:
 # generate random numbers
