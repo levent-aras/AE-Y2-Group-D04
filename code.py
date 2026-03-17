@@ -27,11 +27,10 @@ I = k_b*T/m * alpha**(-2)*(2*alpha*delta_t-3+4*math.e**(-alpha*delta_t)-math.e**
 V = []
 R = []
 Pos = []
-for i in range(1, n):
-  
 
-Y1 = np.random.randn(3)
-Y2 = np.random.randn(3)
+for i in range(1, n):
+  Y1 = np.random.randn(3)
+  Y2 = np.random.randn(3)
 
 
 #Create arrays for particle velocity and position
