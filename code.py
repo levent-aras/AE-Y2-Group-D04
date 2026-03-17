@@ -8,7 +8,7 @@ visc =     #viscosity
 d_p =      #particle diameter
 T =        #temperature
 rho_soot = #soot density
-
+k_b = 1.38 * 10**(-23)
 #Set the Timesteps and initialize the matrix for mean square displacement
 delta_t = 50
 
