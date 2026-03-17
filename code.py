@@ -12,6 +12,7 @@ rho_soot = #soot density
 #Set the Timesteps and initialize the matrix for mean square displacement
 
 #Calculate G, H & I
+alpha = 18*visc/(rho_soot*d_p**2)
 
 #Call the Gaussian-distributed random numbers
 
