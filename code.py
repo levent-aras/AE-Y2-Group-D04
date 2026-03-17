@@ -11,7 +11,7 @@ rho_soot = #soot density
 k_b = 1.38 * 10**(-23)
 m = #mass
 #Set the Timesteps and initialize the matrix for mean square displacement
-delta_t = 50
+delta_t = = [5, 10, 35, 50]
 
 #Calculate G, H & I
 alpha = 18*visc/(rho_soot*d_p**2)
