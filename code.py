@@ -15,7 +15,6 @@ rho_soot = #soot density
 alpha = 18*visc/(rho_soot*d_p**2)
 
 #Call the Gaussian-distributed random numbers
-skibidi
 Y1 = np.random.randn(3)
 Y2 = np.random.randn(3)
 
@@ -32,5 +31,4 @@ Y2 = np.random.randn(3)
 
 #Plot the mean square displacement vs timestep
 
-
-#test test
+test
