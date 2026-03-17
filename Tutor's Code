@@ -1,0 +1,26 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+#Specify the physical parameters of the system (viscosity, temp, soot density, particle diameter etc.)
+
+#Set the Timesteps and initialize the matrix for mean square displacement
+
+#Calculate G, H & I
+
+#Call the Gaussian-distributed random numbers
+
+Y1 = np.random.randn(3)
+Y2 = np.random.randn(3)
+
+#Create arrays for particle velocity and position
+
+# I suggest a time loop. For each time step:
+# generate random numbers
+# update velocity & position
+# compute displacement
+
+#Calculate the soot diffusion using mean square displacement and the Einstein relation, as well as the Avogrado's number
+
+#Plot the 2D & 3D particle trajectories
+
+#Plot the mean square displacement vs timestep
