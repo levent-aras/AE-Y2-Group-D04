@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+import math 
 #Specify the physical parameters of the system (viscosity, temp, soot density, particle diameter etc.)
 
 #Specify the physical parameters of the system (viscosity, temp, soot density, particle diameter etc.)
@@ -10,10 +10,12 @@ T =        #temperature
 rho_soot = #soot density
 
 #Set the Timesteps and initialize the matrix for mean square displacement
+delta_t = 50
 
 #Calculate G, H & I
 alpha = 18*visc/(rho_soot*d_p**2)
 
+G = k_b*T/m * (1-math.e**{-2*alpha*delta_t})
 #Call the Gaussian-distributed random numbers
 
 Y1 = np.random.randn(3)
