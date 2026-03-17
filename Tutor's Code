@@ -2,7 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #Specify the physical parameters of the system (viscosity, temp, soot density, particle diameter etc.)
-d_p = #particle dia
+d_p =      #particle diameter
+T =        #temperature
+
+
 
 #Set the Timesteps and initialize the matrix for mean square displacement
 
