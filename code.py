@@ -7,10 +7,12 @@ import math
 visc =     #viscosity
 d_p =      #particle diameter
 T =        #temperature
-rho_soot = #soot density
+rho_soot =1800 #soot density
 k_b = 1.38 * 10**(-23)
-m = #mass
+Vp = (np.pi/6)*dp**3
+m = rho_soot * Vp
 N = 500 # number of points
+
 #Set the Timesteps and initialize the matrix for mean square displacement
 delta_t = [5, 10, 35, 50]
 
