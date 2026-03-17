@@ -4,9 +4,9 @@ import math
 #Specify the physical parameters of the system (viscosity, temp, soot density, particle diameter etc.)
 
 #Specify the physical parameters of the system (viscosity, temp, soot density, particle diameter etc.)
-visc =     #viscosity
-d_p =      #particle diameter
-T =        #temperature
+visc =  1.85*10**(-5)   #viscosity
+d_p =  500*10**(-9)   #particle diameter
+T = 300      #temperature
 rho_soot =1800 #soot density
 k_b = 1.38 * 10**(-23)
 Vp = (np.pi/6)*d_p**3
