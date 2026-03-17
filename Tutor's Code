@@ -7,8 +7,6 @@ d_p =      #particle diameter
 T =        #temperature
 rho_soot = #soot density
 
-
-
 #Set the Timesteps and initialize the matrix for mean square displacement
 
 #Calculate G, H & I
