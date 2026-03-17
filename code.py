@@ -69,4 +69,4 @@ ax.set_zlabel("z")
 ax.set_title("3D Brownian Motion")
 plt.show()
 
-print(r)
+
