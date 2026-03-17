@@ -52,6 +52,22 @@ Avogadro =
 #Calculate the soot diffusion using mean square displacement and the Einstein relation, as well as the Avogrado's number
 
 #Plot the 2D & 3D particle trajectories
+plt.figure()
+plt.plot(r[:,0], r[:,1])
+plt.xlabel("x (m)")
+plt.ylabel("y (m)")
+plt.title("2D Brownian Trajectory")
+plt.grid()
+plt.show()
+
+fig = plt.figure()
+ax = fig.add_subplot(projection='3d')
+ax.plot(r[:,0], r[:,1], r[:,2])
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_zlabel("z")
+ax.set_title("3D Brownian Motion")
+plt.show()
 
 #Plot the mean square displacement vs timestep
 
