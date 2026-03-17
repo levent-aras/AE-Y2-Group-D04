@@ -31,3 +31,6 @@ Y2 = np.random.randn(3)
 #Plot the 2D & 3D particle trajectories
 
 #Plot the mean square displacement vs timestep
+
+
+#test test
