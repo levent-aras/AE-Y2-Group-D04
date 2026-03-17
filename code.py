@@ -29,12 +29,15 @@ r = np.zeros((N, 3))
 
 
 
-for i in range(1, n):
+for i in range(1, N):
+  
   Y1 = np.random.randn(3)
   Y2 = np.random.randn(3)
   #Create arrays for particle velocity and position
-  V = Y1**G**0.5
+  
+  V = Y1*G**0.5
   R = Y2*H/G**0.5 + (I-(H**2)/G)**0.5*Y2
+  
   v[i] = v[i-1]*math.e**(-alpha*delta_t)+V
   r[i] = r[i-1]+R+(v[i-1]/alpha)*(1-math.e**(-alpha*delta_t))
   
