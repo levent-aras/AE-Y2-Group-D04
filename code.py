@@ -4,14 +4,14 @@ import math
 #Specify the physical parameters of the system (viscosity, temp, soot density, particle diameter etc.)
 
 #Specify the physical parameters of the system (viscosity, temp, soot density, particle diameter etc.)
-visc =  1.85*10**(-5)   #viscosity
-d_p =  500*10**(-9)   #particle diameter
-T = 300      #temperature
-rho_soot =1800 #soot density
-k_b = 1.38 * 10**(-23)
-Vp = (np.pi/6)*d_p**3
-m = rho_soot * Vp
-N = 500 # number of points
+visc =  1.85*10**(-5)         #viscosity
+d_p =  500*10**(-9)           #particle diameter
+T = 300                       #temperature
+rho_soot =1800                #soot density
+k_b = 1.38 * 10**(-23)        #Boltzmann constant
+Vp = (np.pi/6)*d_p**3         #particle volume
+m = rho_soot * Vp             #particle mass
+N = 500                       #number of points
 
 #Set the Timesteps and initialize the matrix for mean square displacement
 delta_t = [5, 10, 35, 50]
