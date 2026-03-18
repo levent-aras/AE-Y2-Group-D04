@@ -13,7 +13,7 @@ Vp = (np.pi/6)*d_p**3         #particle volume
 m = rho_soot * Vp             #particle mass
 N = 500              #number of points
 
-#Set the Timesteps and initialize the matrix for mean square displacement
+#Set the Timesteps  and initialize the matrix for mean square displacement
 delta_t = 5
 
 #Calculate G, H & I
