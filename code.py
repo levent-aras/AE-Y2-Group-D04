@@ -43,17 +43,13 @@ for i in range(1, N):
 # Displacement from initial position
 disp = r - r[0]
 
-# Squared displacement at each time step
-msd = np.sum(disp**2, axis=1)
+msd_x = np.mean(disp[:, :, 0]**2, axis=1)
+msd_y = np.mean(disp[:, :, 1]**2, axis=1)
+msd_z = np.mean(disp[:, :, 2]**2, axis=1)
+msd_total = msd_x + msd_y + msd_z
 
-# Time array
-time = np.arange(N) * delta_t
-
-# Total MSD-based diffusion estimate
-msd_total = np.mean(msd)
-t_total = (N - 1) * delta_t
-D_est = msd_total / (6 * t_total)
-
+slope_total, intercept_total = np.polyfit(t[1:], msd_total[1:], 1)
+D_est = slope_total / 6.0
 # Drag force coefficient
 f = 3 * np.pi * visc * d_p
 
