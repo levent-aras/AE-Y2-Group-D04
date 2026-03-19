@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math 
 #Specify the physical parameters of the system (viscosity, temp, soot density, particle diameter etc.)
-
+#check test
 #Specify the physical parameters of the system (viscosity, temp, soot density, particle diameter etc.)
 visc =  1.85*10**(-5)         #viscosity
 d_p =  500*10**(-9)           #particle diameter
@@ -25,17 +25,20 @@ H = (k_b*T/m)*((alpha**(-1))*(1-math.e**(-alpha*delta_t))**2)
 I = k_b*T/m * alpha**(-2)*(2*alpha*delta_t-3+4*math.e**(-alpha*delta_t)-math.e**(-2*alpha*delta_t))
 #Call the Gaussian-distributed random numbers
 
-v = np.zeros((N, 3))
-r = np.zeros((N, 3))
+n_particles = 2000
+t = np.arange(N) * delta_t
+
+v = np.zeros((N, n_particles, 3))
+r = np.zeros((N, n_particles, 3))
 
 
 
 for i in range(1, N):
-  Y1 = np.random.randn(3)
-  Y2 = np.random.randn(3)
+  Y1 = np.random.randn(n_particles, 3)
+  Y2 = np.random.randn(n_particles, 3)
   #Create arrays for particle velocity and position
   V = Y1*G**0.5
-  R = Y2*H/G**0.5 + (I-(H**2)/G)**0.5*Y2
+  R = Y1*H/G**0.5 + (I-(H**2)/G)**0.5*Y2
   v[i] = v[i-1]*math.e**(-alpha*delta_t)+V
   r[i] = r[i-1]+R+(v[i-1]/alpha)*(1-math.e**(-alpha*delta_t))
   
@@ -68,7 +71,7 @@ print("Estimated Avogadro number N_A =", N_A_est)
 
 #Plot the 2D & 3D particle trajectories
 plt.figure()
-plt.plot(r[:,0], r[:,1])
+plt.plot(r[:, 0, 0], r[:, 0, 1])
 plt.xlabel("x (m)")
 plt.ylabel("y (m)")
 plt.title("2D Brownian Trajectory")
@@ -77,7 +80,7 @@ plt.show()
 
 fig = plt.figure()
 ax = fig.add_subplot(projection='3d')
-ax.plot(r[:,0], r[:,1], r[:,2])
+ax.plot(r[:, 0, 0], r[:, 0, 1], r[:, 0, 2])
 ax.set_xlabel("x")
 ax.set_ylabel("y")
 ax.set_zlabel("z")
@@ -85,7 +88,7 @@ ax.set_title("3D Brownian Motion")
 plt.show()
 
 plt.figure()
-plt.plot(time, msd)
+plt.plot(t, msd_total)
 plt.xlabel("Time (s)")
 plt.ylabel("MSD (m^2)")
 plt.title("Mean Square Displacement vs Time")
