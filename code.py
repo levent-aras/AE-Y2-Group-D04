@@ -15,7 +15,7 @@ N = 500       #number of points
 R_gas = 8.314462618               #universal gas constant
 
 #Set the Timesteps  and initialize the matrix for mean square displacement
-delta_t = 0.1
+delta_t = 5
 
 #Calculate G, H & I
 alpha = 18*visc/(rho_soot*d_p**2)
@@ -59,9 +59,26 @@ f = 3 * np.pi * visc * d_p
 # Avogadro number estimate from Stokes-Einstein rearranged
 N_A_est = R_gas * T / (f * D_est)
 
-print("Estimated diffusion coefficient D =", D_est)
+# Fit slopes for each direction
+slope_x, _ = np.polyfit(t[1:], msd_x[1:], 1)
+slope_y, _ = np.polyfit(t[1:], msd_y[1:], 1)
+slope_z, _ = np.polyfit(t[1:], msd_z[1:], 1)
+
+# Diffusion coefficients
+D_x = slope_x / 2
+D_y = slope_y / 2
+D_z = slope_z / 2
+
+print("Estimated diffusion coefficient D:")
+print("D_x =", D_x)
+print("D_y =", D_y)
+print("D_z =", D_z)
 print("Estimated Avogadro number N_A =", N_A_est)
 
+D_stokes = k_b*T/ (3*math.pi * visc * d_p)
+
+print("Diffusion calculates using Stokes-Einstein equation:", D_stokes)
+print ("Established values of Avogardros number:", 6.023*10**(23))
 
 # I suggest a time loop. For each time step:
 # generate random numbers
@@ -88,12 +105,30 @@ ax.set_zlabel("z")
 ax.set_title("3D Brownian Motion")
 plt.show()
 
+# MSD in x
 plt.figure()
-plt.plot(t, msd_total)
-plt.xlabel("Time (s)")
-plt.ylabel("MSD (m^2)")
-plt.title("Mean Square Displacement vs Time")
+plt.plot(t, msd_x)
+plt.xlabel('Time (s)')
+plt.ylabel('MSD_x (m^2)')
+plt.title('Mean Square Displacement in X direction')
 plt.grid()
 plt.show()
 
+# MSD in y
+plt.figure()
+plt.plot(t, msd_y)
+plt.xlabel('Time (s)')
+plt.ylabel('MSD_y (m^2)')
+plt.title('Mean Square Displacement in Y direction')
+plt.grid()
+plt.show()
+
+# MSD in z
+plt.figure()
+plt.plot(t, msd_z)
+plt.xlabel('Time (s)')
+plt.ylabel('MSD_z (m^2)')
+plt.title('Mean Square Displacement in Z direction')
+plt.grid()
+plt.show()
 
