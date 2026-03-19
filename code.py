@@ -12,6 +12,7 @@ k_b = 1.38 * 10**(-23)        #Boltzmann constant
 Vp = (np.pi/6)*d_p**3         #particle volume
 m = rho_soot * Vp             #particle mass
 N = 500              #number of points
+R = 8.314462618               #universal gas constant
 
 #Set the Timesteps  and initialize the matrix for mean square displacement
 delta_t = 5
@@ -43,7 +44,8 @@ for i in range(1, N):
 disp = r - r[0]                                  # displacement from initial position
 msd_total = np.mean(np.sum(disp**2, axis=1))     # total mean square displacement
 t_total = (N - 1) * delta_t                      # total elapsed time
-D_est = msd_total / (6 * t_total)                # diffusion coefficient
+D_est = msd_total / (6 * t_total)                # D
+f = 3 * np.pi * visc * d_p                       #drag 
 #Avogadro = 
   # Avogadro number estimate from D_est and Stokes-Einstein rearranged
     # N_A = R T / (f D)
