@@ -40,6 +40,10 @@ for i in range(1, N):
   
 
 #msd = 
+disp = r - r[0]                                  # displacement from initial position
+msd_total = np.mean(np.sum(disp**2, axis=1))     # total mean square displacement
+t_total = (N - 1) * delta_t                      # total elapsed time
+D_est = msd_total / (6 * t_total)                # diffusion coefficient
 #Avogadro = 
   # Avogadro number estimate from D_est and Stokes-Einstein rearranged
     # N_A = R T / (f D)
