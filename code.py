@@ -43,10 +43,9 @@ for i in range(1, N):
 # Displacement from initial position
 disp = r - r[0]
 
-msd_x = np.mean(disp[:, :, 0]**2, axis=1)
-msd_y = np.mean(disp[:, :, 1]**2, axis=1)
-msd_z = np.mean(disp[:, :, 2]**2, axis=1)
-msd_total = msd_x + msd_y + msd_z
+msd = np.mean(disp**2)
+
+
 
 slope_total, intercept_total = np.polyfit(t[1:], msd_total[1:], 1)
 D_est = slope_total / 6.0
