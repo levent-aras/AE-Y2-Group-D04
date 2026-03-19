@@ -11,11 +11,11 @@ rho_soot =1800                #soot density
 k_b = 1.38 * 10**(-23)        #Boltzmann constant
 Vp = (np.pi/6)*d_p**3         #particle volume
 m = rho_soot * Vp             #particle mass
-N = 500              #number of points
+N = 500       #number of points
 R_gas = 8.314462618               #universal gas constant
 
 #Set the Timesteps  and initialize the matrix for mean square displacement
-delta_t = 1
+delta_t = 5
 
 #Calculate G, H & I
 alpha = 18*visc/(rho_soot*d_p**2)
@@ -46,9 +46,10 @@ for i in range(1, N):
 # Displacement from initial position
 disp = r - r[0]
 
-msd = np.mean(disp**2)
-
-
+msd_x = np.mean(disp[:, :, 0]**2, axis=1)
+msd_y = np.mean(disp[:, :, 1]**2, axis=1)
+msd_z = np.mean(disp[:, :, 2]**2, axis=1)
+msd_total = msd_x + msd_y + msd_z
 
 slope_total, intercept_total = np.polyfit(t[1:], msd_total[1:], 1)
 D_est = slope_total / 6.0
