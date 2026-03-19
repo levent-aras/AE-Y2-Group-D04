@@ -1,8 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import math 
-#Specify the physical parameters of the system (viscosity, temp, soot density, particle diameter etc.)
-#check test
+
 #Specify the physical parameters of the system (viscosity, temp, soot density, particle diameter etc.)
 visc =  1.85*10**(-5)         #viscosity
 d_p =  500*10**(-9)           #particle diameter
@@ -11,8 +10,10 @@ rho_soot =1800                #soot density
 k_b = 1.38 * 10**(-23)        #Boltzmann constant
 Vp = (np.pi/6)*d_p**3         #particle volume
 m = rho_soot * Vp             #particle mass
-N = 500       #number of points
-R_gas = 8.314462618               #universal gas constant
+N = 500                       #number of points
+n_particles = 2000            #number of particles
+R_gas = 8.314462618           #universal gas constant
+
 
 #Set the Timesteps  and initialize the matrix for mean square displacement
 delta_t = 5
@@ -23,17 +24,20 @@ alpha = 18*visc/(rho_soot*d_p**2)
 G = k_b*T/m * (1-math.e**(-2*alpha*delta_t))
 H = (k_b*T/m)*((alpha**(-1))*(1-math.e**(-alpha*delta_t))**2)
 I = k_b*T/m * alpha**(-2)*(2*alpha*delta_t-3+4*math.e**(-alpha*delta_t)-math.e**(-2*alpha*delta_t))
-#Call the Gaussian-distributed random numbers
 
-n_particles = 2000
+
 t = np.arange(N) * delta_t
 
 v = np.zeros((N, n_particles, 3))
 r = np.zeros((N, n_particles, 3))
 
-
+# I suggest a time loop. For each time step:
+# generate random numbers
+# update velocity & position
+# compute displacement
 
 for i in range(1, N):
+  #Call the Gaussian-distributed random numbers
   Y1 = np.random.randn(n_particles, 3)
   Y2 = np.random.randn(n_particles, 3)
   #Create arrays for particle velocity and position
@@ -46,6 +50,7 @@ for i in range(1, N):
 # Displacement from initial position
 disp = r - r[0]
 
+#mean squared displacement
 msd_x = np.mean(disp[:, :, 0]**2, axis=1)
 msd_y = np.mean(disp[:, :, 1]**2, axis=1)
 msd_z = np.mean(disp[:, :, 2]**2, axis=1)
@@ -53,6 +58,7 @@ msd_total = msd_x + msd_y + msd_z
 
 slope_total, intercept_total = np.polyfit(t[1:], msd_total[1:], 1)
 D_est = slope_total / 6.0
+
 # Drag force coefficient
 f = 3 * np.pi * visc * d_p
 
@@ -80,12 +86,6 @@ D_stokes = k_b*T/ (3*math.pi * visc * d_p)
 print("Diffusion calculates using Stokes-Einstein equation:", D_stokes)
 print ("Established values of Avogardros number:", 6.023*10**(23))
 
-# I suggest a time loop. For each time step:
-# generate random numbers
-# update velocity & position
-# compute displacement
-
-#Calculate the soot diffusion using mean square displacement and the Einstein relation, as well as the Avogrado's number
 
 #Plot the 2D & 3D particle trajectories
 plt.figure()
