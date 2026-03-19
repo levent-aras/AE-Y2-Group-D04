@@ -132,3 +132,15 @@ plt.title('Mean Square Displacement in Z direction')
 plt.grid()
 plt.show()
 
+# MSD in x, y, z on same plot
+plt.figure()
+plt.plot(t, msd_x, label='MSD x-direction')
+plt.plot(t, msd_y, label='MSD y-direction')
+plt.plot(t, msd_z, label='MSD z-direction')
+plt.xlabel('Time (s)')
+plt.ylabel('MSD (m^2)')
+plt.title('Mean Square Displacement')
+plt.grid()
+plt.legend()
+plt.show()
+
