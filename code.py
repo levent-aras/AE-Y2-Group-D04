@@ -12,7 +12,7 @@ k_b = 1.38 * 10**(-23)        #Boltzmann constant
 Vp = (np.pi/6)*d_p**3         #particle volume
 m = rho_soot * Vp             #particle mass
 N = 500              #number of points
-R = 8.314462618               #universal gas constant
+R_gas = 8.314462618               #universal gas constant
 
 #Set the Timesteps  and initialize the matrix for mean square displacement
 delta_t = 5
