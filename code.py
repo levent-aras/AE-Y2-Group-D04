@@ -40,16 +40,28 @@ for i in range(1, N):
   r[i] = r[i-1]+R+(v[i-1]/alpha)*(1-math.e**(-alpha*delta_t))
   
 
-#msd = 
-disp = r - r[0]                                  # displacement from initial position
-msd_total = np.mean(np.sum(disp**2, axis=1))     # total mean square displacement
-t_total = (N - 1) * delta_t                      # total elapsed time
-D_est = msd_total / (6 * t_total)                # D
-f = 3 * np.pi * visc * d_p                       #drag 
-#Avogadro = 
-  # Avogadro number estimate from D_est and Stokes-Einstein rearranged
-    # N_A = R T / (f D)
-    N_A_est = R * T / (f * D_est)
+# Displacement from initial position
+disp = r - r[0]
+
+# Squared displacement at each time step
+msd = np.sum(disp**2, axis=1)
+
+# Time array
+time = np.arange(N) * delta_t
+
+# Total MSD-based diffusion estimate
+msd_total = np.mean(msd)
+t_total = (N - 1) * delta_t
+D_est = msd_total / (6 * t_total)
+
+# Drag force coefficient
+f = 3 * np.pi * visc * d_p
+
+# Avogadro number estimate from Stokes-Einstein rearranged
+N_A_est = R_gas * T / (f * D_est)
+
+print("Estimated diffusion coefficient D =", D_est)
+print("Estimated Avogadro number N_A =", N_A_est)
 
 
 # I suggest a time loop. For each time step:
@@ -75,6 +87,14 @@ ax.set_xlabel("x")
 ax.set_ylabel("y")
 ax.set_zlabel("z")
 ax.set_title("3D Brownian Motion")
+plt.show()
+
+plt.figure()
+plt.plot(time, msd)
+plt.xlabel("Time (s)")
+plt.ylabel("MSD (m^2)")
+plt.title("Mean Square Displacement vs Time")
+plt.grid()
 plt.show()
 
 
