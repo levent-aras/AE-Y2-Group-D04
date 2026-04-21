@@ -35,6 +35,7 @@ r = np.zeros((N, n_steps, 3))
 # generate random numbers
 # update velocity & position
 # compute displacement
+np.random.seed(67)
 
 for i in range(1, N):
   #Call the Gaussian-distributed random numbers
@@ -83,6 +84,7 @@ print("Estimated Avogadro number N_A =", N_A_est)
 
 D_stokes = k_b*T/ (3*math.pi * visc * d_p)
 
+print("Predicted Diffusion coefficient:", D_est)
 print("Diffusion calculates using Stokes-Einstein equation:", D_stokes)
 print ("Established values of Avogardros number:", 6.023*10**(23))
 
