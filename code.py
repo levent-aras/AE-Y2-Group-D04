@@ -11,7 +11,7 @@ k_b = 1.38 * 10**(-23)        #Boltzmann constant
 Vp = (np.pi/6)*d_p**3         #particle volume
 m = rho_soot * Vp             #particle mass
 N = 500                       #number of points
-n_steps = 2000            #number of measurements
+n_steps = 2000                #number of measurements
 R_gas = 8.314462618           #universal gas constant
 
 
@@ -63,7 +63,7 @@ D_est = slope_total / 6.0
 f = 3 * np.pi * visc * d_p
 
 # Avogadro number estimate from Stokes-Einstein rearranged
-N_A_est = R_gas * T * delta_t * 2 / (f * D_est)
+N_A_est = R_gas * T * / (f * D_est)
 
 # Fit slopes for each direction
 slope_x, _ = np.polyfit(t[1:], msd_x[1:], 1)
