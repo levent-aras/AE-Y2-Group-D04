@@ -11,7 +11,7 @@ k_b = 1.38 * 10**(-23)        #Boltzmann constant
 Vp = (np.pi/6)*d_p**3         #particle volume
 m = rho_soot * Vp             #particle mass
 N = 500                       #number of points
-n_particles = 2000            #number of particles
+n_steps = 2000            #number of measurements
 R_gas = 8.314462618           #universal gas constant
 
 
@@ -28,8 +28,8 @@ I = k_b*T/m * alpha**(-2)*(2*alpha*delta_t-3+4*math.e**(-alpha*delta_t)-math.e**
 
 t = np.arange(N) * delta_t
 
-v = np.zeros((N, n_particles, 3))
-r = np.zeros((N, n_particles, 3))
+v = np.zeros((N, n_steps, 3))
+r = np.zeros((N, n_steps, 3))
 
 # I suggest a time loop. For each time step:
 # generate random numbers
@@ -38,8 +38,8 @@ r = np.zeros((N, n_particles, 3))
 
 for i in range(1, N):
   #Call the Gaussian-distributed random numbers
-  Y1 = np.random.randn(n_particles, 3)
-  Y2 = np.random.randn(n_particles, 3)
+  Y1 = np.random.randn(n_steps, 3)
+  Y2 = np.random.randn(n_steps, 3)
   #Create arrays for particle velocity and position
   V = Y1*G**0.5
   R = Y1*H/G**0.5 + (I-(H**2)/G)**0.5*Y2
