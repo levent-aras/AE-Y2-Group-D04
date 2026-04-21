@@ -63,7 +63,7 @@ D_est = slope_total / 6.0
 f = 3 * np.pi * visc * d_p
 
 # Avogadro number estimate from Stokes-Einstein rearranged
-N_A_est = R_gas * T / (f * D_est)
+N_A_est = R_gas * T * delta_t * 2 / (f * D_est)
 
 # Fit slopes for each direction
 slope_x, _ = np.polyfit(t[1:], msd_x[1:], 1)
